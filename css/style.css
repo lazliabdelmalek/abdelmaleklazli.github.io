@@ -221,9 +221,9 @@ img {
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1001;
+  z-index: 1001; /* ← Au-dessus du header */
+  position: relative;
 }
-
 .hamburger-line {
   display: block;
   width: 24px;
@@ -248,7 +248,7 @@ img {
 /* Menu mobile */
 .mobile-menu {
   position: fixed;
-  top: 0;
+  top: 72px; /* ← Juste en dessous du header */
   left: 0;
   right: 0;
   bottom: 0;
@@ -260,13 +260,14 @@ img {
   align-items: center;
   justify-content: center;
   gap: var(--space-lg);
-  transform: translateY(-100%);
+  transform: translateX(100%); /* ← Glisse depuis la droite */
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 999;
+  z-index: 998; /* ← En dessous du header (1000) */
+  overflow-y: auto;
 }
 
 .mobile-menu.open {
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 .mobile-nav-list {
@@ -354,6 +355,9 @@ img {
 /* =============================================================
    CV DROPDOWN
 ============================================================= */
+/* =============================================================
+   CV DROPDOWN
+============================================================= */
 .cv-dropdown {
   position: relative;
   display: inline-block;
@@ -362,8 +366,7 @@ img {
 .cv-dropdown-menu {
   position: absolute;
   top: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   min-width: 300px;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
@@ -372,14 +375,15 @@ img {
   padding: 0.5rem;
   opacity: 0;
   visibility: hidden;
-  transition: var(--transition-smooth);
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 50;
 }
 
 .cv-dropdown-menu.open {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 .cv-dropdown-menu a {
@@ -391,6 +395,7 @@ img {
   font-size: var(--fs-sm);
   color: var(--color-text);
   transition: var(--transition-fast);
+  white-space: nowrap;
 }
 
 .cv-dropdown-menu a:hover {
@@ -412,6 +417,17 @@ img {
   color: var(--color-accent-cyan);
 }
 
+/* Responsive : sur mobile, le dropdown s'affiche centré */
+@media (max-width: 768px) {
+  .cv-dropdown-menu {
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  
+  .cv-dropdown-menu.open {
+    transform: translateX(-50%) translateY(0);
+  }
+}
 /* =============================================================
    HERO SECTION
 ============================================================= */
