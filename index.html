@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== SEO ===== -->
+  <title>Abdelmalek Lazli — .NET Developer & SAP S/4HANA Consultant (PS/PPM)</title>
+  <meta name="description" content="Portfolio d'Abdelmalek Lazli, développeur Full Stack .NET et consultant SAP S/4HANA (PS & PPM), basé à Alger." />
+  <meta name="keywords" content="Abdelmalek Lazli, .NET Developer, SAP S/4HANA, SAP PS, SAP PPM, Full Stack Developer, Portfolio, Algeria, C#, ASP.NET MVC" />
+  <meta name="author" content="Abdelmalek Lazli" />
+
+  <!-- ===== Open Graph ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Abdelmalek Lazli — .NET Developer & SAP S/4HANA Consultant" />
+  <meta property="og:description" content="Portfolio professionnel : développement .NET et conseil fonctionnel SAP S/4HANA (PS & PPM)." />
+  <meta property="og:image" content="images/og-cover.jpg" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- ===== Favicon ===== -->
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+
+  <!-- ===== Google Fonts ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- ===== Feuille de style ===== -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- =========================================================
+       HEADER / NAVIGATION FIXE
+  ========================================================== -->
+  <header id="main-header" class="header">
+    <div class="header-container">
+      <!-- Logo -->
+      <a href="#home" class="header-logo">
+        <span class="logo-text">AL.</span>
+      </a>
+
+      <!-- Navigation desktop -->
+      <nav class="header-nav" id="header-nav" aria-label="Navigation principale">
+        <ul class="nav-list-horizontal" id="nav-list-horizontal" role="list">
+          <li><a href="#home" class="nav-link-h active" data-section="home">Home</a></li>
+          <li><a href="#about" class="nav-link-h" data-section="about">About</a></li>
+          <li><a href="#skills" class="nav-link-h" data-section="skills">Skills</a></li>
+          <li><a href="#experience" class="nav-link-h" data-section="experience">Experience</a></li>
+          <li><a href="#projects" class="nav-link-h" data-section="projects">Projects</a></li>
+          <li><a href="#education" class="nav-link-h" data-section="education">Education</a></li>
+          <li><a href="#contact" class="nav-link-h" data-section="contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Bouton Contact (desktop) -->
+      <a href="#contact" class="btn btn-gradient btn-sm header-cta">Contact Me</a>
+
+      <!-- Bouton hamburger (mobile) -->
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Menu mobile overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+      <ul class="mobile-nav-list" role="list">
+        <li><a href="#home" class="mobile-nav-link" data-section="home">Home</a></li>
+        <li><a href="#about" class="mobile-nav-link" data-section="about">About</a></li>
+        <li><a href="#skills" class="mobile-nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#experience" class="mobile-nav-link" data-section="experience">Experience</a></li>
+        <li><a href="#projects" class="mobile-nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#education" class="mobile-nav-link" data-section="education">Education</a></li>
+        <li><a href="#contact" class="mobile-nav-link" data-section="contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-gradient mobile-cta">Contact Me</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =========================================================
+         SECTION 1 — HERO
+    ========================================================== -->
+    <section id="home" class="section hero-section">
+      <!-- Formes décoratives -->
+      <div class="hero-shapes" aria-hidden="true">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-dots"></div>
+      </div>
+
+      <div class="hero-container">
+        <!-- Texte -->
+        <div class="hero-content">
+          <p class="hero-greeting reveal fade-up">👋 Hello, I'm</p>
+          <h1 class="hero-name reveal fade-up delay-1">
+            Abdelmalek <span class="gradient-text">Lazli</span>
+          </h1>
+          <div class="hero-role-wrapper reveal fade-up delay-2">
+            <span class="hero-role-prefix">I'm a</span>
+            <span class="hero-role" id="typing-role"></span>
+            <span class="typing-cursor" aria-hidden="true">|</span>
+          </div>
+          <p class="hero-description reveal fade-up delay-3">
+            Full Stack .NET Developer & SAP S/4HANA Consultant (PS/PPM) — 
+            I build robust enterprise solutions, from code to functional integration. 
+            Based in Algiers, Algeria, with expertise in Oil & Gas industrial environments.
+          </p>
+          <div class="hero-buttons reveal fade-up delay-4">
+            <div class="cv-dropdown">
+              <button class="btn btn-gradient" id="cv-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+                📄 Download CV ▾
+              </button>
+              <div class="cv-dropdown-menu" id="cv-dropdown-menu">
+                <a href="docs/cv-lazli-abdelmalek-sap-ps-ppm.pdf" download>
+                  <span>⚙️</span> SAP Profile (PS/PPM) <span class="cv-tag">ERP</span>
+                </a>
+                <a href="docs/cv-lazli-abdelmalek-dotnet-fullstack.pdf" download>
+                  <span>💻</span> .NET Developer Profile <span class="cv-tag cv-tag-dev">CODE</span>
+                </a>
+              </div>
+            </div>
+            <a href="#contact" class="btn btn-outline-light">Contact Me</a>
+          </div>
+          <!-- Mini stats -->
+          <div class="hero-mini-stats reveal fade-up delay-5">
+            <div class="mini-stat">
+              <span class="mini-stat-number">2+</span>
+              <span class="mini-stat-label">Years Experience</span>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-stat-number">10+</span>
+              <span class="mini-stat-label">Projects Done</span>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-stat-number">4</span>
+              <span class="mini-stat-label">SAP Certifications</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo -->
+        <div class="hero-visual reveal fade-left delay-3">
+          <div class="hero-photo-wrapper">
+            <div class="hero-photo-bg"></div>
+            <div class="hero-photo-frame">
+              <!-- Remplace par <img src="images/photo.jpg" alt="Abdelmalek Lazli" /> -->
+              <div class="hero-photo-placeholder">
+                <span>AL</span>
+              </div>
+            </div>
+            <!-- Badge flottant -->
+            <div class="hero-badge hero-badge-1">
+              <span class="badge-icon">✅</span>
+              <span>SAP Certified</span>
+            </div>
+            <div class="hero-badge hero-badge-2">
+              <span class="badge-icon">💻</span>
+              <span>.NET Expert</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator-new" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-mouse">
+          <div class="scroll-dot-anim"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 2 — ABOUT
+    ========================================================== -->
+    <section id="about" class="section about-section-new">
+      <div class="section-container">
+        <div class="section-label reveal fade-up">About Me</div>
+        <h2 class="section-heading reveal fade-up delay-1">
+          Bridging <span class="gradient-text">Code</span> & <span class="gradient-text">Enterprise Systems</span>
+        </h2>
+        <p class="section-subheading reveal fade-up delay-2">
+          A passionate developer and SAP consultant with a strong analytical background in Operations Research.
+        </p>
+
+        <div class="about-grid-new reveal fade-up delay-3">
+          <!-- Texte -->
+          <div class="about-text-new">
+            <p>
+              I am <strong>Abdelmalek Lazli</strong>, a Full Stack .NET Developer and SAP S/4HANA Consultant based in Algiers. My career sits at the intersection of <strong>software development</strong> and <strong>ERP functional consulting</strong>, with a strong focus on industrial environments and the Energy sector.
+            </p>
+            <p>
+              With deep expertise in <span class="highlight-text">C#, ASP.NET MVC, WebForms, and SQL Server</span>, I have delivered measurable improvements of <strong>30% to 70%</strong> in performance and reliability for business-critical applications at <strong>ENAC (Sonatrach Group)</strong>. My SAP S/4HANA certifications and hands-on experience in <strong>PS (Project System)</strong> enable me to approach projects holistically — from functional requirements to technical solutions.
+            </p>
+            <p>
+              Holding a Master's degree in Operations Research from USTHB, I bring an analytical and data-driven approach to complex problem-solving. My technical stack also includes <strong>Power BI</strong> for decision support, <strong>Git/GitLab</strong> for version control, and <strong>ETL</strong> processes for data integration.
+            </p>
+            <a href="#contact" class="btn btn-gradient">Let's Work Together →</a>
+          </div>
+
+          <!-- Cartes -->
+          <div class="about-cards-new">
+            <div class="about-card-new reveal fade-left delay-4">
+              <div class="about-card-icon">🎯</div>
+              <h3>Operations Research</h3>
+              <p>Multi-criteria optimization, predictive modeling, CPLEX, Python</p>
+            </div>
+            <div class="about-card-new reveal fade-left delay-5">
+              <div class="about-card-icon">💻</div>
+              <h3>.NET Development</h3>
+              <p>C#, ASP.NET MVC, WebForms, SQL Server, Power BI</p>
+            </div>
+            <div class="about-card-new reveal fade-left delay-6">
+              <div class="about-card-icon">⚙️</div>
+              <h3>SAP S/4HANA</h3>
+              <p>PS, PPM, MM, FI/CO, SD, PM — Cross-module integration</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 3 — SKILLS
+    ========================================================== -->
+    <section id="skills" class="section skills-section-new">
+      <div class="section-container">
+        <div class="section-label reveal fade-up">My Skills</div>
+        <h2 class="section-heading reveal fade-up delay-1">
+          Technologies & <span class="gradient-text">Expertise</span>
+        </h2>
+        <p class="section-subheading reveal fade-up delay-2">
+          A comprehensive toolkit for building modern enterprise solutions.
+        </p>
+
+        <div class="skills-grid-new">
+          <!-- Carte 1 -->
+          <div class="skill-card-new reveal fade-up delay-1">
+            <div class="skill-card-icon">🖥️</div>
+            <h3>Languages & Frameworks</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">C#</span>
+              <span class="skill-tag">ASP.NET MVC</span>
+              <span class="skill-tag">WebForms</span>
+              <span class="skill-tag">.NET Core</span>
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Python</span>
+            </div>
+          </div>
+
+          <!-- Carte 2 -->
+          <div class="skill-card-new reveal fade-up delay-2">
+            <div class="skill-card-icon">🗄️</div>
+            <h3>Databases & ETL</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">SQL Server</span>
+              <span class="skill-tag">T-SQL</span>
+              <span class="skill-tag">Stored Procedures</span>
+              <span class="skill-tag">Data Warehouse</span>
+              <span class="skill-tag">Talend</span>
+              <span class="skill-tag">SSIS</span>
+            </div>
+          </div>
+
+          <!-- Carte 3 -->
+          <div class="skill-card-new reveal fade-up delay-3">
+            <div class="skill-card-icon">📊</div>
+            <h3>BI & Reporting</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">SAP Analytics Cloud</span>
+              <span class="skill-tag">Dashboards</span>
+              <span class="skill-tag">KPI Analysis</span>
+            </div>
+          </div>
+
+          <!-- Carte 4 -->
+          <div class="skill-card-new reveal fade-up delay-1">
+            <div class="skill-card-icon">⚙️</div>
+            <h3>SAP S/4HANA Modules</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">PS</span>
+              <span class="skill-tag">PPM</span>
+              <span class="skill-tag">MM</span>
+              <span class="skill-tag">FI/CO</span>
+              <span class="skill-tag">SD</span>
+              <span class="skill-tag">PM</span>
+            </div>
+          </div>
+
+          <!-- Carte 5 -->
+          <div class="skill-card-new reveal fade-up delay-2">
+            <div class="skill-card-icon">🔧</div>
+            <h3>Tools & Practices</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitLab</span>
+              <span class="skill-tag">SDLC</span>
+              <span class="skill-tag">Legacy Modernization</span>
+              <span class="skill-tag">Debugging</span>
+            </div>
+          </div>
+
+          <!-- Carte 6 -->
+          <div class="skill-card-new reveal fade-up delay-3">
+            <div class="skill-card-icon">🤝</div>
+            <h3>Soft Skills</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Communication</span>
+              <span class="skill-tag">Teamwork</span>
+              <span class="skill-tag">Problem Solving</span>
+              <span class="skill-tag">Adaptability</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 4 — EXPERIENCE
+    ========================================================== -->
+    <section id="experience" class="section experience-section-new">
+      <div class="section-container">
+        <div class="section-label reveal fade-up">Experience</div>
+        <h2 class="section-heading reveal fade-up delay-1">
+          Professional <span class="gradient-text">Journey</span>
+        </h2>
+        <p class="section-subheading reveal fade-up delay-2">
+          From Operations Research to Enterprise Software Development & SAP Consulting.
+        </p>
+
+        <div class="timeline-new">
+          <!-- Exp 1 -->
+          <div class="timeline-item-new reveal fade-right">
+            <div class="timeline-dot-new"></div>
+            <div class="timeline-card-new">
+              <span class="timeline-date-new">Sep 2025 – Present</span>
+              <h3>.NET / ASP.NET Software Developer</h3>
+              <p class="timeline-company-new">ENAC - Sonatrach Subsidiary (Oil & Gas), Algiers</p>
+              <ul>
+                <li>Improved administrative efficiency by <strong>30%</strong> with ASP.NET MVC & WebForms apps.</li>
+                <li>Reduced system downtime by up to <strong>70%</strong> through legacy system refactoring.</li>
+                <li>Built operational dashboards with Power BI & SQL Server.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Exp 2 -->
+          <div class="timeline-item-new reveal fade-left">
+            <div class="timeline-dot-new"></div>
+            <div class="timeline-card-new">
+              <span class="timeline-date-new">Jul 2025 – Sep 2025</span>
+              <h3>Junior SAP PS Consultant</h3>
+              <p class="timeline-company-new">CNPC Beijing Richfit - Sonatrach Project, Algiers</p>
+              <ul>
+                <li>Reduced configuration errors by <strong>40%</strong> through SAP PS setup & validation.</li>
+                <li>Strengthened cross-module integration between PS, MM, PM, FI/CO.</li>
+                <li>Delivered technical documentation & SAP S/4HANA training.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Exp 3 -->
+          <div class="timeline-item-new reveal fade-right">
+            <div class="timeline-dot-new"></div>
+            <div class="timeline-card-new">
+              <span class="timeline-date-new">Mar 2025 – May 2025</span>
+              <h3>SAP Young Professional Program</h3>
+              <p class="timeline-company-new">SAP, Setif, Algeria</p>
+              <ul>
+                <li>Intensive training covering MM, SD, FI/CO, PS, EPM, PP, EWM modules.</li>
+                <li>Earned SAP Certified Associate & Specialist certifications.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Exp 4 -->
+          <div class="timeline-item-new reveal fade-left">
+            <div class="timeline-dot-new"></div>
+            <div class="timeline-card-new">
+              <span class="timeline-date-new">Jan 2024 – Jun 2024</span>
+              <h3>Operations Research Intern</h3>
+              <p class="timeline-company-new">Sonatrach, Algiers</p>
+              <ul>
+                <li>Built multi-criteria optimization model with Python & IBM CPLEX.</li>
+                <li>Delivered predictive modeling reports for budget prioritization.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 5 — PROJECTS
+    ========================================================== -->
+    <section id="projects" class="section projects-section-new">
+      <div class="section-container">
+        <div class="section-label reveal fade-up">Portfolio</div>
+        <h2 class="section-heading reveal fade-up delay-1">
+          Featured <span class="gradient-text">Projects</span>
+        </h2>
+        <p class="section-subheading reveal fade-up delay-2">
+          Real-world applications delivering measurable business impact.
+        </p>
+
+        <div class="projects-grid-new">
+          <!-- Projet 1 -->
+          <div class="project-card-new reveal fade-up delay-1">
+            <div class="project-card-top">
+              <div class="project-card-icon">📋</div>
+              <span class="project-card-tag">ASP.NET MVC</span>
+            </div>
+            <h3>Leave Request System</h3>
+            <p>Full-stack web application with automated workflow routing and role-based access control (RBAC).</p>
+            <ul>
+              <li>Reduced manual processing time significantly</li>
+              <li>Multi-level approval workflow</li>
+              <li>Bootstrap 5 + SQL Server via C#</li>
+            </ul>
+            <span class="project-card-date">Oct 2025 – Apr 2026</span>
+          </div>
+
+          <!-- Projet 2 -->
+          <div class="project-card-new reveal fade-up delay-2">
+            <div class="project-card-top">
+              <div class="project-card-icon">📁</div>
+              <span class="project-card-tag">Full Stack</span>
+            </div>
+            <h3>EDMS</h3>
+            <p>Electronic Document Management System centralizing company archives in a secure digital platform.</p>
+            <ul>
+              <li>Centralized archive system</li>
+              <li>Reduced data loss risk</li>
+              <li>Scalable document management</li>
+            </ul>
+            <span class="project-card-date">Nov 2025 – Feb 2026</span>
+          </div>
+
+          <!-- Projet 3 -->
+          <div class="project-card-new reveal fade-up delay-3">
+            <div class="project-card-top">
+              <div class="project-card-icon">📊</div>
+              <span class="project-card-tag">Power BI</span>
+            </div>
+            <h3>CEO Procurement Dashboard</h3>
+            <p>Executive dashboard providing real-time visibility into project status, KPIs, and critical deadlines.</p>
+            <ul>
+              <li>Real-time visibility for executives</li>
+              <li>Multi-business unit integration</li>
+              <li>Strategic decision support</li>
+            </ul>
+            <span class="project-card-date">Jan 2026 – Mar 2026</span>
+          </div>
+
+          <!-- Projet 4 -->
+          <div class="project-card-new reveal fade-up delay-1">
+            <div class="project-card-top">
+              <div class="project-card-icon">🛒</div>
+              <span class="project-card-tag">Desktop App</span>
+            </div>
+            <h3>Purchase Order Management</h3>
+            <p>Desktop application for procurement management with supplier contract integration.</p>
+            <ul>
+              <li>Improved order tracking</li>
+              <li>Reduced processing errors</li>
+              <li>Workflow automation</li>
+            </ul>
+            <span class="project-card-date">Dec 2025 – Jan 2026</span>
+          </div>
+
+          <!-- Projet 5 -->
+          <div class="project-card-new reveal fade-up delay-2">
+            <div class="project-card-top">
+              <div class="project-card-icon">🎨</div>
+              <span class="project-card-tag">UI/UX</span>
+            </div>
+            <h3>Contracts Management UI Redesign</h3>
+            <p>Complete interface redesign of the supplier contracts management application.</p>
+            <ul>
+              <li>Enhanced user experience</li>
+              <li>Simplified workflows</li>
+              <li>Reduced task completion time</li>
+            </ul>
+            <span class="project-card-date">Feb 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 6 — EDUCATION & CERTIFICATIONS
+    ========================================================== -->
+    <section id="education" class="section education-section-new">
+      <div class="section-container">
+        <div class="section-label reveal fade-up">Education & Certifications</div>
+        <h2 class="section-heading reveal fade-up delay-1">
+          Academic & <span class="gradient-text">Professional</span> Background
+        </h2>
+        <p class="section-subheading reveal fade-up delay-2">
+          Combining strong academic foundations with industry-recognized SAP certifications.
+        </p>
+
+        <div class="edu-grid-new">
+          <!-- Formation -->
+          <div class="edu-block-new reveal fade-up delay-1">
+            <h3>🎓 Academic Background</h3>
+            <div class="edu-item-new">
+              <span class="edu-year-new">2022 – 2024</span>
+              <div>
+                <h4>Master's Degree in Operations Research</h4>
+                <p>USTHB, Algiers</p>
+              </div>
+            </div>
+            <div class="edu-item-new">
+              <span class="edu-year-new">2019 – 2022</span>
+              <div>
+                <h4>Bachelor's Degree in Mathematics – Operations Research</h4>
+                <p>USTHB, Algiers</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certifications -->
+          <div class="edu-block-new reveal fade-up delay-2">
+            <h3>📜 SAP Certifications</h3>
+            <div class="cert-item-new">
+              <span class="cert-badge-new">2025</span>
+              <span>SAP Certified Associate – Business Process Integration</span>
+            </div>
+            <div class="cert-item-new">
+              <span class="cert-badge-new">2025</span>
+              <span>SAP Certified Specialist – S/4HANA Cloud Private Edition</span>
+            </div>
+            <div class="cert-item-new">
+              <span class="cert-badge-new">2026</span>
+              <span>SAP Certified – Data Analyst – SAP Analytics Cloud</span>
+            </div>
+            <div class="cert-item-new">
+              <span class="cert-badge-new">2026</span>
+              <span>SAP Certified – Implementation Consultant – E2E Business Processes</span>
+            </div>
+          </div>
+
+          <!-- Langues -->
+          <div class="edu-block-new reveal fade-up delay-3">
+            <h3>🌐 Languages</h3>
+            <div class="lang-item-new">
+              <span>Arabic</span>
+              <span class="lang-level-new">Native</span>
+            </div>
+            <div class="lang-item-new">
+              <span>French</span>
+              <span class="lang-level-new">Proficient</span>
+            </div>
+            <div class="lang-item-new">
+              <span>English</span>
+              <span class="lang-level-new">Proficient</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 7 — CONTACT
+    ========================================================== -->
+    <section id="contact" class="section contact-section-new">
+      <div class="section-container">
+        <div class="section-label reveal fade-up">Get In Touch</div>
+        <h2 class="section-heading reveal fade-up delay-1">
+          Let's <span class="gradient-text">Work</span> Together
+        </h2>
+        <p class="section-subheading reveal fade-up delay-2">
+          Whether you need a .NET developer, an SAP consultant, or a hybrid profile bridging both worlds — I'm here to help.
+        </p>
+
+        <div class="contact-grid-new reveal fade-up delay-3">
+          <!-- Infos -->
+          <div class="contact-info-new">
+            <div class="contact-info-card">
+              <div class="contact-info-icon">✉️</div>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:abdelmalek.lazli@gmail.com">abdelmalek.lazli@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="contact-info-icon">📞</div>
+              <div>
+                <h4>Phone</h4>
+                <a href="tel:+213540977919">+213 540 977 919</a>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="contact-info-icon">🔗</div>
+              <div>
+                <h4>LinkedIn</h4>
+                <a href="https://linkedin.com/in/abdelmalek-lazli-18b5321b0" target="_blank" rel="noopener noreferrer">abdelmalek-lazli</a>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="contact-info-icon">📍</div>
+              <div>
+                <h4>Location</h4>
+                <span>Algiers, Algeria</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulaire -->
+          <form class="contact-form-new" id="contact-form" action="#" method="POST">
+            <div class="form-row">
+              <div class="form-group-new">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required />
+              </div>
+              <div class="form-group-new">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required />
+              </div>
+            </div>
+            <div class="form-group-new">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Project Discussion" required />
+            </div>
+            <div class="form-group-new">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-gradient btn-full">
+              Send Message →
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer id="main-footer" class="footer-new">
+    <div class="footer-container">
+      <p>© <span id="current-year"></span> Abdelmalek Lazli. Designed & Built with ❤️</p>
+      <div class="footer-socials">
+        <a href="mailto:abdelmalek.lazli@gmail.com" aria-label="Email">✉️</a>
+        <a href="https://linkedin.com/in/abdelmalek-lazli-18b5321b0" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">🔗</a>
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">💻</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Scripts ===== -->
+  <script src="js/main.js"></script>
+</body>
+</html>
