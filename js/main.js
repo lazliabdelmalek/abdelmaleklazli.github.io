@@ -1,10 +1,11 @@
 /* =============================================================
    PORTFOLIO PREMIUM — JAVASCRIPT
    Abdelmalek Lazli
+   Version 3.0 — Polished & Refined
 ============================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Portfolio Premium chargé.');
+  console.log('Portfolio Premium chargé — v3.0');
 
   initHeaderScroll();
   initMobileMenu();
@@ -21,17 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
 ============================================================= */
 function initHeaderScroll() {
   const header = document.getElementById('main-header');
+  if (!header) return;
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
+    header.classList.toggle('scrolled', window.scrollY > 50);
   });
 }
 
 /* =============================================================
-   MENU MOBILE
+   MENU MOBILE — Version complètement refaite
 ============================================================= */
 function initMobileMenu() {
   const hamburger = document.getElementById('hamburger');
@@ -39,27 +38,62 @@ function initMobileMenu() {
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
   const mobileCta = document.querySelector('.mobile-cta');
 
+  if (!hamburger || !mobileMenu) return;
+
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    hamburger.classList.add('active');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('no-scroll');
+  }
+
   function closeMenu() {
     mobileMenu.classList.remove('open');
     hamburger.classList.remove('active');
     hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+    document.body.classList.remove('no-scroll');
   }
 
+  // Toggle au clic sur le hamburger
   hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    hamburger.classList.toggle('active');
-    hamburger.setAttribute('aria-expanded', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    if (mobileMenu.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
 
+  // Fermeture au clic sur un lien
   mobileLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
   });
 
+  // Fermeture au clic sur le CTA
   if (mobileCta) {
-    mobileCta.addEventListener('click', closeMenu);
+    mobileCta.addEventListener('click', () => {
+      closeMenu();
+    });
   }
+
+  // Fermeture au clic en dehors du menu
+  document.addEventListener('click', (e) => {
+    if (mobileMenu.classList.contains('open') &&
+        !mobileMenu.contains(e.target) &&
+        e.target !== hamburger &&
+        !hamburger.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Fermeture avec la touche Échap
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      closeMenu();
+      hamburger.focus();
+    }
+  });
 }
 
 /* =============================================================
@@ -107,7 +141,7 @@ function initTypingEffect() {
 }
 
 /* =============================================================
-   CV DROPDOWN
+   CV DROPDOWN — Amélioré
 ============================================================= */
 function initCvDropdown() {
   const btn = document.getElementById('cv-dropdown-btn');
@@ -120,10 +154,20 @@ function initCvDropdown() {
     btn.setAttribute('aria-expanded', isOpen);
   });
 
+  // Fermeture au clic en dehors
   document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && e.target !== btn) {
+    if (!menu.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
       menu.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Fermeture avec Échap
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.focus();
     }
   });
 }
@@ -136,16 +180,16 @@ function initScrollSpy() {
   const navLinks = document.querySelectorAll('.nav-link-h');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
+  if (sections.length === 0) return;
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('id');
-          // Desktop
           navLinks.forEach((link) => {
             link.classList.toggle('active', link.getAttribute('data-section') === id);
           });
-          // Mobile
           mobileLinks.forEach((link) => {
             link.classList.toggle('active', link.getAttribute('data-section') === id);
           });
@@ -182,6 +226,7 @@ function initSmoothScroll() {
 ============================================================= */
 function initScrollReveal() {
   const reveals = document.querySelectorAll('.reveal');
+  if (reveals.length === 0) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
