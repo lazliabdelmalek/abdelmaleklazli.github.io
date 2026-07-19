@@ -2,6 +2,7 @@
    PORTFOLIO PREMIUM — JAVASCRIPT v4.0
    Abdelmalek Lazli
    Enterprise Solutions with .NET & SAP S/4HANA
+   MENU MOBILE CORRIGÉ — 2026
 ============================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,16 +23,14 @@ function initHeaderScroll() {
   const header = document.getElementById('main-header');
   if (!header) return;
 
-  let lastScroll = 0;
   window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    header.classList.toggle('scrolled', currentScroll > 50);
-    lastScroll = currentScroll;
+    header.classList.toggle('scrolled', window.scrollY > 50);
   });
 }
 
 /* =============================================================
-   MENU MOBILE
+   MENU MOBILE — REFORÉ POUR FONCTIONNER HORS DU HEADER
+   Le menu est maintenant dans <body> directement, plus dans <header>
 ============================================================= */
 function initMobileMenu() {
   const hamburger = document.getElementById('hamburger');
@@ -55,24 +54,35 @@ function initMobileMenu() {
     document.body.classList.remove('no-scroll');
   }
 
-  hamburger.addEventListener('click', () => {
+  // Toggle au clic sur le hamburger
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
     mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
   });
 
-  mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
-  if (mobileCta) mobileCta.addEventListener('click', closeMenu);
+  // Fermeture au clic sur un lien de navigation
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
 
-  // Fermeture au clic en dehors
-  document.addEventListener('click', (e) => {
-    if (mobileMenu.classList.contains('open') &&
-        !mobileMenu.contains(e.target) &&
-        e.target !== hamburger &&
-        !hamburger.contains(e.target)) {
+  // Fermeture au clic sur le bouton CTA du menu
+  if (mobileCta) {
+    mobileCta.addEventListener('click', () => {
+      closeMenu();
+    });
+  }
+
+  // Fermeture au clic en dehors du menu (sur le fond blanc)
+  mobileMenu.addEventListener('click', (e) => {
+    // Si on clique directement sur le fond (pas sur un lien)
+    if (e.target === mobileMenu) {
       closeMenu();
     }
   });
 
-  // Fermeture avec Échap
+  // Fermeture avec la touche Échap
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
       closeMenu();
