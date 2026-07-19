@@ -1,16 +1,14 @@
 /* =============================================================
-   PORTFOLIO PREMIUM — JAVASCRIPT
+   PORTFOLIO PREMIUM — JAVASCRIPT v4.0
    Abdelmalek Lazli
-   Version 3.0 — Polished & Refined
+   Enterprise Solutions with .NET & SAP S/4HANA
 ============================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Portfolio Premium chargé — v3.0');
+  console.log('Portfolio Premium v4.0 — Enterprise Solutions');
 
   initHeaderScroll();
   initMobileMenu();
-  initTypingEffect();
-  initCvDropdown();
   initScrollSpy();
   initScrollReveal();
   initSmoothScroll();
@@ -24,13 +22,16 @@ function initHeaderScroll() {
   const header = document.getElementById('main-header');
   if (!header) return;
 
+  let lastScroll = 0;
   window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 50);
+    const currentScroll = window.scrollY;
+    header.classList.toggle('scrolled', currentScroll > 50);
+    lastScroll = currentScroll;
   });
 }
 
 /* =============================================================
-   MENU MOBILE — Version complètement refaite
+   MENU MOBILE
 ============================================================= */
 function initMobileMenu() {
   const hamburger = document.getElementById('hamburger');
@@ -54,30 +55,14 @@ function initMobileMenu() {
     document.body.classList.remove('no-scroll');
   }
 
-  // Toggle au clic sur le hamburger
   hamburger.addEventListener('click', () => {
-    if (mobileMenu.classList.contains('open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
   });
 
-  // Fermeture au clic sur un lien
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      closeMenu();
-    });
-  });
+  mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+  if (mobileCta) mobileCta.addEventListener('click', closeMenu);
 
-  // Fermeture au clic sur le CTA
-  if (mobileCta) {
-    mobileCta.addEventListener('click', () => {
-      closeMenu();
-    });
-  }
-
-  // Fermeture au clic en dehors du menu
+  // Fermeture au clic en dehors
   document.addEventListener('click', (e) => {
     if (mobileMenu.classList.contains('open') &&
         !mobileMenu.contains(e.target) &&
@@ -87,87 +72,11 @@ function initMobileMenu() {
     }
   });
 
-  // Fermeture avec la touche Échap
+  // Fermeture avec Échap
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
       closeMenu();
       hamburger.focus();
-    }
-  });
-}
-
-/* =============================================================
-   EFFET TYPING
-============================================================= */
-function initTypingEffect() {
-  const el = document.getElementById('typing-role');
-  if (!el) return;
-
-  const roles = [
-    '.NET Full Stack Developer',
-    'SAP S/4HANA Consultant (PS/PPM)'
-  ];
-
-  let roleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-
-  function type() {
-    const currentRole = roles[roleIndex];
-
-    if (isDeleting) {
-      charIndex--;
-    } else {
-      charIndex++;
-    }
-
-    el.textContent = currentRole.substring(0, charIndex);
-
-    let speed = isDeleting ? 30 : 60;
-
-    if (!isDeleting && charIndex === currentRole.length) {
-      speed = 1800;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-      speed = 400;
-    }
-
-    setTimeout(type, speed);
-  }
-
-  type();
-}
-
-/* =============================================================
-   CV DROPDOWN — Amélioré
-============================================================= */
-function initCvDropdown() {
-  const btn = document.getElementById('cv-dropdown-btn');
-  const menu = document.getElementById('cv-dropdown-menu');
-  if (!btn || !menu) return;
-
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen);
-  });
-
-  // Fermeture au clic en dehors
-  document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  // Fermeture avec Échap
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menu.classList.contains('open')) {
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.focus();
     }
   });
 }
@@ -187,19 +96,19 @@ function initScrollSpy() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('id');
-          navLinks.forEach((link) => {
+          navLinks.forEach(link => {
             link.classList.toggle('active', link.getAttribute('data-section') === id);
           });
-          mobileLinks.forEach((link) => {
+          mobileLinks.forEach(link => {
             link.classList.toggle('active', link.getAttribute('data-section') === id);
           });
         }
       });
     },
-    { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' }
+    { threshold: 0.25, rootMargin: '-80px 0px 0px 0px' }
   );
 
-  sections.forEach((section) => observer.observe(section));
+  sections.forEach(section => observer.observe(section));
 }
 
 /* =============================================================
@@ -240,7 +149,7 @@ function initScrollReveal() {
     { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
   );
 
-  reveals.forEach((el) => observer.observe(el));
+  reveals.forEach(el => observer.observe(el));
 }
 
 /* =============================================================
