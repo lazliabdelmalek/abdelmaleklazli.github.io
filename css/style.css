@@ -2,6 +2,7 @@
    PORTFOLIO PREMIUM — LIGHT THEME v4.0
    Abdelmalek Lazli
    Enterprise Solutions with .NET & SAP S/4HANA
+   MENU MOBILE CORRIGÉ — 2026
 ============================================================= */
 
 /* ----- 1. Reset ----- */
@@ -94,7 +95,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body.no-scroll { overflow: hidden; }
+body.no-scroll {
+  overflow: hidden;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
@@ -117,6 +120,76 @@ img { max-width: 100%; display: block; }
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* =============================================================
+   MENU MOBILE OVERLAY — INDÉPENDANT DU HEADER
+   Corrigé : z-index 9999, fond opaque 100%, hors header
+============================================================= */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh; /* Dynamic Viewport Height pour mobile */
+  background: #FFFFFF;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-xl) var(--space-md);
+  width: 100%;
+  max-width: 400px;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.mobile-nav-link {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  color: var(--color-text);
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  color: var(--color-primary);
+  background: rgba(79, 70, 229, 0.06);
+}
+
+.mobile-cta {
+  margin-top: var(--space-md);
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+  justify-content: center;
 }
 
 /* =============================================================
@@ -172,7 +245,7 @@ img { max-width: 100%; display: block; }
 .header-cta { display: inline-flex; flex-shrink: 0; }
 
 /* =============================================================
-   HAMBURGER & MOBILE MENU
+   HAMBURGER
 ============================================================= */
 .hamburger {
   display: none;
@@ -182,7 +255,7 @@ img { max-width: 100%; display: block; }
   width: 40px; height: 40px;
   background: none; border: none;
   cursor: pointer;
-  z-index: 2000;
+  z-index: 10000; /* Au-dessus du menu mobile pour pouvoir cliquer */
   position: relative;
   padding: 8px;
 }
@@ -196,28 +269,6 @@ img { max-width: 100%; display: block; }
 .hamburger.active .hamburger-line:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
 .hamburger.active .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.active .hamburger-line:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
-
-.mobile-menu {
-  position: fixed; inset: 0;
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  z-index: 1500;
-  display: flex;
-  align-items: center; justify-content: center;
-  opacity: 0; visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-.mobile-menu.open { opacity: 1; visibility: visible; }
-.mobile-nav { display: flex; flex-direction: column; align-items: center; gap: var(--space-lg); }
-.mobile-nav-list { list-style: none; text-align: center; display: flex; flex-direction: column; gap: var(--space-sm); }
-.mobile-nav-link {
-  font-size: var(--fs-2xl); font-weight: 600; color: var(--color-text);
-  display: block; padding: var(--space-sm) var(--space-md); border-radius: var(--radius-md);
-  transition: var(--transition-fast);
-}
-.mobile-nav-link:hover { color: var(--color-primary); background: rgba(79, 70, 229, 0.06); }
-.mobile-cta { margin-top: var(--space-md); width: 100%; max-width: 280px; text-align: center; justify-content: center; }
 
 @media (max-width: 1024px) {
   .header-nav { display: none; }
