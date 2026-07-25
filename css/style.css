@@ -13,7 +13,22 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.testimonial-author {
+  display: block;
+  margin-top: var(--space-sm);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  font-style: normal;
+}
+/* Ajouter dans la section scroll-indicator-new */
+@media (max-width: 480px) {
+  .scroll-indicator-new {
+    display: none;
+  }
+}
+/* Dans :root, après --color-sap: #0072CE; */
+--color-sap-light: rgba(0, 114, 206, 0.08);
 html {
   scroll-behavior: smooth;
 }
@@ -97,6 +112,8 @@ body {
 
 body.no-scroll {
   overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -482,7 +499,7 @@ img { max-width: 100%; display: block; }
 .sap-card h3 { font-size: var(--fs-xl); margin-bottom: 4px; }
 .sap-role { color: var(--color-text-secondary); font-weight: 500; margin-bottom: var(--space-sm); }
 .sap-modules { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: var(--space-sm); }
-.sap-modules span { padding: 4px 10px; background: rgba(0, 114, 206, 0.08); border-radius: var(--radius-full); font-size: var(--fs-xs); font-weight: 600; color: var(--color-sap); }
+.sap-modules span { padding: 4px 10px; background: var(--color-sap-light); border-radius: var(--radius-full); font-size: var(--fs-xs); font-weight: 600; color: var(--color-sap); }
 .sap-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
 .sap-card ul li { padding-left: 1.2rem; position: relative; color: var(--color-text-secondary); font-size: var(--fs-sm); }
 .sap-card ul li::before { content: "▹"; position: absolute; left: 0; color: var(--color-sap); }
